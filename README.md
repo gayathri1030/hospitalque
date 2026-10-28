@@ -28,6 +28,12 @@ npm run dev
 
 Copy `.env.example` to `.env` if the API is running at a non-default address; set `VITE_API_URL` to its origin. Vite prints a local URL (normally `http://localhost:5173`). The dashboard opens with clearly identified demo queue data. Use **Sign in** to authenticate against the API or create a patient account. Use **New appointment** to add a demo queue row; click a status chip to advance its demo state; search/filter the table; use **Export report** to download CSV.
 
+## Deploy the frontend to GitHub Pages
+
+The repository is configured for the project site at `https://gayathri1030.github.io/hospitalque/`. The GitHub Actions workflow builds and publishes `dist/` on pushes to `main`. In repository **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions**.
+
+If the API has been deployed, add a repository Actions variable named `VITE_API_URL` with the public HTTPS API origin (without an `/api` suffix). The workflow passes this variable into the frontend build. `VITE_API_URL` is public browser configuration, so never put a secret in it. If it is unset, demo UI remains available but API-backed login and workflows report that the backend URL is not configured. Configure the backend CORS origin as `https://gayathri1030.github.io`.
+
 ## Run the API
 
 In a second terminal:

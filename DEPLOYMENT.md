@@ -12,6 +12,10 @@ Deploy the Vite frontend as a static site and the Express API as a persistent No
 2. Install the root dependencies and run `npm run build`.
 3. Publish the generated `dist/` directory with SPA fallback to `index.html` for client-side routes.
 
+### GitHub Pages project site
+
+This repository uses the `/hospitalque/` Vite base path. The `.github/workflows/deploy.yml` workflow runs `npm ci` and `npm run build` on pushes to `main`, then deploys `dist/` with GitHub Pages. In repository **Settings → Pages**, select **GitHub Actions** as the source. For API-backed features, set the Actions repository variable `VITE_API_URL` to the deployed HTTPS API origin, and configure API `CLIENT_ORIGIN` as `https://gayathri1030.github.io`. Do not store credentials or secrets in `VITE_*` variables; they are included in the public frontend bundle.
+
 Vite embeds `VITE_*` values in the browser bundle. Do not put secrets in frontend environment variables.
 
 ## API

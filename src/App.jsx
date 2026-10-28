@@ -149,7 +149,7 @@ const payload=authMode==='login'?{email:authEmail,password:authPassword}:{name:a
 const result=await api(path,{method:'POST',body:JSON.stringify(payload)})
 sessionStorage.setItem('mediflow-token',result.token);setAuthToken(result.token);setAccount(result.user)
 setRole(result.user.role[0].toUpperCase()+result.user.role.slice(1));setModal('');setAuthPassword('');toast(`Signed in as ${result.user.role}`)
-} catch(error){setAuthError(`${trDisplay(error.message)}.${tr('Check that the API is running at')}$ {apiBaseUrl}.`)}
+} catch(error){setAuthError(`${trDisplay(error.message)}. ${tr('Check that the API is running at')} ${apiBaseUrl || 'your configured VITE_API_URL'}.`)}
 finally{setAuthBusy(false)}
 }
 const signOut=()=>{sessionStorage.removeItem('mediflow-token');setAuthToken(null);setAccount(null);setRole('Admin');toast('Signed out. Demo dashboard is active.')}
